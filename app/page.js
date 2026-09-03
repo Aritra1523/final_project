@@ -14,7 +14,7 @@ import Header from "@/components/Header";
 import SearchAndFilters from "@/components/SearchAndFilters";
 import ProductGrid from "@/components/ProductGrid";
 import Pagination from "@/components/Pagination";
-import CartPanel from "@/components/CartPanel";
+
 
 const ITEMS_PER_PAGE = 12;
 
@@ -81,35 +81,50 @@ export default function Home() {
     <div className="flex min-h-screen flex-col">
       <Header />
 
-      <section className="border-b border-line bg-surface">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-10 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
-          <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-highlight/20 px-3 py-1 text-xs font-medium text-primary-dark">
-              <Leaf size={12} />
-              Restocked daily
-            </span>
-            <h1 className="mt-3 max-w-xl font-serif text-3xl font-semibold leading-tight text-ink sm:text-4xl">
-              This week&apos;s fresh picks
-            </h1>
-            <p className="mt-2 max-w-lg text-sm text-ink-soft">
-              Search the shelves, build your basket, and watch the discount unlock as your total grows.
-            </p>
-          </div>
-          <div className="flex gap-6 border-t border-line pt-4 lg:border-t-0 lg:pt-0">
-            <div>
-              <p className="font-serif text-2xl font-semibold text-primary-dark">{products.length}</p>
-              <p className="text-xs text-ink-soft">items in stock</p>
-            </div>
-            <div>
-              <p className="font-serif text-2xl font-semibold text-primary-dark">{categories.length}</p>
-              <p className="text-xs text-ink-soft">categories</p>
-            </div>
-          </div>
-        </div>
-      </section>
+     <section className="hero-section border-b-2 border-indigo-100/60 bg-gradient-to-br from-indigo-50/90 via-white to-purple-50/60 backdrop-blur-sm">
+  <div className="hero-container mx-auto flex max-w-7xl flex-col gap-6 px-4 py-12 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8 lg:py-16">
+    
+    {/* Left Content */}
+    <div className="hero-content">
+      <span className="hero-badge inline-flex items-center gap-2 rounded-2xl border-2 border-emerald-200/60 bg-gradient-to-r from-emerald-50/90 to-teal-50/90 px-4 py-1.5 text-xs font-extrabold text-emerald-700 shadow-sm shadow-emerald-100/30 backdrop-blur-sm">
+        <Leaf size={14} strokeWidth={2.5} className="text-emerald-500" />
+        Restocked Daily
+      </span>
+      <h1 className="hero-title mt-4 max-w-xl font-serif text-4xl font-bold leading-tight text-slate-800 sm:text-5xl lg:text-6xl">
+        This week's <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent bg-size-200 animate-gradient">fresh picks</span>
+      </h1>
+      <p className="hero-description mt-3 max-w-lg text-sm font-medium leading-relaxed text-slate-600">
+        Search the shelves, build your basket, and watch the discount unlock as your total grows.
+      </p>
+    </div>
+
+    {/* Right Stats */}
+    <div className="hero-stats flex items-center gap-8 border-t-2 border-indigo-100/60 pt-5 lg:border-t-0 lg:pt-0">
+      <div className="hero-stat">
+        <p className="hero-stat-number font-serif text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent lg:text-4xl">
+          {products.length}
+        </p>
+        <p className="hero-stat-label mt-0.5 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+          items in stock
+        </p>
+      </div>
+      
+      <div className="hero-stat-divider hidden h-12 w-px bg-indigo-200/60 lg:block" />
+      
+      <div className="hero-stat">
+        <p className="hero-stat-number font-serif text-3xl font-extrabold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent lg:text-4xl">
+          {categories.length}
+        </p>
+        <p className="hero-stat-label mt-0.5 text-[10px] font-bold uppercase tracking-widest text-slate-500">
+          categories
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       <main id="catalog-top" className="mx-auto w-full max-w-7xl flex-1 scroll-mt-24 px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[240px_1fr_320px]">
+        <div className="flex flex-col gap-6">
           <SearchAndFilters
             search={search}
             onSearchChange={setSearch}
@@ -130,8 +145,6 @@ export default function Home() {
             />
             <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
           </div>
-
-          <CartPanel />
         </div>
       </main>
 

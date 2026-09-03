@@ -49,16 +49,32 @@ export default function ProductGrid({ status, error, products, onRetry }) {
     );
   }
 
-  if (products.length === 0) {
+ if (products.length === 0) {
     return (
-      <div className="product-grid-empty rounded-3xl border-2 border-indigo-100/60 bg-gradient-to-br from-indigo-50/40 to-white p-12 text-center shadow-md shadow-indigo-100/30">
-        <div className="product-empty-icon mb-3 text-4xl">🔍</div>
-        <p className="product-empty-title text-base font-bold text-slate-700">
+      <div className="empty-state-wrapper rounded-3xl border-2 border-indigo-100/60 bg-gradient-to-br from-indigo-50/40 via-white to-purple-50/30 p-12 text-center shadow-xl shadow-indigo-100/30 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-200/40">
+        <div className="empty-state-icon-container mb-4 inline-flex rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 p-4 shadow-inner shadow-indigo-200/50">
+          <div className="empty-state-icon text-5xl transition-transform duration-300 hover:scale-110 hover:rotate-6">
+            🔍
+          </div>
+        </div>
+        <p className="empty-state-title text-xl font-extrabold text-slate-800">
           No items found
         </p>
-        <p className="product-empty-desc mt-1 text-sm text-slate-500">
+        <div className="empty-state-divider mx-auto my-3 h-1 w-12 rounded-full bg-gradient-to-r from-indigo-300 to-purple-300" />
+        <p className="empty-state-desc text-sm font-medium text-slate-500">
           Try a different keyword or category
         </p>
+        <div className="empty-state-suggestions mt-4 flex flex-wrap items-center justify-center gap-2">
+          <span className="empty-state-suggestion-pill rounded-full bg-indigo-50/80 px-3 py-1 text-xs font-medium text-indigo-600 ring-1 ring-indigo-200/50 backdrop-blur-sm">
+            💡 Check spelling
+          </span>
+          <span className="empty-state-suggestion-pill rounded-full bg-purple-50/80 px-3 py-1 text-xs font-medium text-purple-600 ring-1 ring-purple-200/50 backdrop-blur-sm">
+            🔄 Clear filters
+          </span>
+          <span className="empty-state-suggestion-pill rounded-full bg-emerald-50/80 px-3 py-1 text-xs font-medium text-emerald-600 ring-1 ring-emerald-200/50 backdrop-blur-sm">
+            📦 Browse all
+          </span>
+        </div>
       </div>
     );
   }

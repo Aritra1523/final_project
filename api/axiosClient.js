@@ -1,8 +1,6 @@
 import axios from "axios";
 
-// Single, global axios instance. Every API call in the app goes through
-// this client so base URL, timeouts and headers only need to live in one
-// place.
+
 const axiosClient = axios.create({
   baseURL: "https://dummyjson.com",
   timeout: 10000,

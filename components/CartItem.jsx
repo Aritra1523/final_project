@@ -6,14 +6,39 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import { toast } from "react-toastify";
 import { decrementQty, incrementQty, removeItem } from "@/store/slices/cartSlice";
 import { formatCurrency } from "@/lib/pricing";
-
+import Swal from 'sweetalert2';
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
 
-  const handleRemove = () => {
-    dispatch(removeItem(item.id));
-    toast.info(`Removed "${item.title}" from your basket`);
-  };
+
+
+const handleRemove = () => {
+  Swal.fire({
+    title: 'Remove item?',
+    text: `Are you sure you want to remove "${item.title}" from your basket?`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#ef4444',
+    cancelButtonColor: '#6b7280',
+    confirmButtonText: 'Yes, remove it',
+    cancelButtonText: 'Cancel',
+    reverseButtons: true,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(removeItem(item.id));
+      
+      
+      // Optional success toast after removal
+      Swal.fire({
+        title: 'Removed!',
+        text: `"${item.title}" has been removed from your basket.`,
+        icon: 'success',
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
+  });
+};
 
   return (
     <div className="cart-item-wrapper flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 shadow-sm transition-all duration-200 hover:border-indigo-200 hover:bg-white hover:shadow-md">

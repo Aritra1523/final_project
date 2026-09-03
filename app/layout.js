@@ -2,7 +2,7 @@ import "./globals.css";
 import Providers from "./providers";
 
 export const metadata = {
-  title: "Field & Pantry — Grocery basket",
+  title: "Grain & Grove — Grocery Market",
   description: "Browse groceries, build a basket, and unlock discounts as you shop.",
 };
 
