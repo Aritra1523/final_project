@@ -148,9 +148,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer className="border-t border-line px-4 py-6 text-center text-xs text-ink-soft sm:px-6 lg:px-8">
-        Try promo codes FRESH10, MEGA20 (min $100) or FLAT15 (min $40).
-      </footer>
+     
     </div>
   );
 }

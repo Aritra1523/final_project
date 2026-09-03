@@ -17,6 +17,7 @@ import { computePricing, formatCurrency } from "@/lib/pricing";
 import CartItem from "./CartItem";
 import CouponBox from "./CouponBox";
 import DiscountProgress from "./DiscountProgress";
+import Swal from "sweetalert2";
 
 export default function CartPanel({ variant = "sidebar" }) {
   const isFullPage = variant === "fullPage";
@@ -37,10 +38,33 @@ export default function CartPanel({ variant = "sidebar" }) {
     dispatch(undoLast());
   };
 
-  const handleClear = () => {
-    dispatch(clearCart());
-    toast.info("Basket cleared");
-  };
+
+const handleClear = () => {
+  Swal.fire({
+    title: 'Clear Basket?',
+    text: 'All items will be removed from your basket.',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#ef4444',
+    cancelButtonColor: '#6b7280',
+    confirmButtonText: 'Yes, clear all',
+    cancelButtonText: 'Cancel',
+    reverseButtons: true,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      dispatch(clearCart());
+      Swal.fire({
+        icon: 'success',
+        title: 'Cleared!',
+        text: 'Your basket has been cleared.',
+        timer: 2000,
+        showConfirmButton: false,
+        toast: true,
+        position: 'top-end',
+      });
+    }
+  });
+};
 
   const handleCheckout = () => {
     setCheckedOut(true);

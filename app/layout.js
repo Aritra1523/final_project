@@ -2,8 +2,8 @@ import "./globals.css";
 import Providers from "./providers";
 
 export const metadata = {
-  title: "Grain & Grove — Grocery Market",
-  description: "Browse groceries, build a basket, and unlock discounts as you shop.",
+  title: "Field & Pantry",
+  description: "Fresh groceries delivered to your doorstep",
 };
 
 export default function RootLayout({ children }) {

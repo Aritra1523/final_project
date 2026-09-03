@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { getNextTier, getTierDiscountPercent, formatCurrency } from "@/lib/pricing";

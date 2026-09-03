@@ -10,7 +10,6 @@ export function loadPersistedCart() {
     const raw = window.localStorage.getItem(CART_STORAGE_KEY);
     if (!raw) return undefined;
     const parsed = JSON.parse(raw);
-    // Guard against malformed/old data shapes.
     if (!parsed || !Array.isArray(parsed.items)) return undefined;
     return parsed;
   } catch {
