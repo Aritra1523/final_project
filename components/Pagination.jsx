@@ -5,8 +5,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function getPageNumbers(current, total) {
-  // Always show first, last, current, and one neighbour on each side;
-  // collapse the rest behind an ellipsis.
+
   const pages = new Set([1, total, current, current - 1, current + 1]);
   return Array.from(pages)
     .filter((p) => p >= 1 && p <= total)

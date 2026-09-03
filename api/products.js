@@ -1,9 +1,6 @@
 import axiosClient from "./axiosClient";
 
-/**
- * Fetch the full product catalog from dummyjson.com and shape it into the
- * flat structure the rest of the app expects.
- */
+
 export async function fetchAllProducts({ limit = 100 } = {}) {
   const { data } = await axiosClient.get("/products", {
     params: { limit, select: "id,title,price,category,thumbnail,stock,rating,description" },

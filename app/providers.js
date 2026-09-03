@@ -10,8 +10,7 @@ import { hydrateCart } from "@/store/slices/cartSlice";
 export default function Providers({ children }) {
   const [store] = useState(() => makeStore());
 
-  // Runs only on the client, after the first paint - safe to change state
-  // here because hydration has already finished matching server output.
+
   useEffect(() => {
     const persisted = loadPersistedCart();
     if (persisted) {

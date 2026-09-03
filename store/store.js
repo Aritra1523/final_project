@@ -23,16 +23,11 @@ function persistCart(cartState) {
   try {
     window.localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cartState));
   } catch {
-    // Storage might be full or unavailable (private browsing, etc.) - ignore.
   }
 }
 
 export function makeStore() {
-  // IMPORTANT: never read localStorage here. This runs during the very
-  // first render on both the server and the client - if the client's
-  // initial state differs (because localStorage has items) React throws a
-  // hydration mismatch. The cart always starts empty here; it gets
-  // "hydrated" from localStorage after mount instead (see Providers.js).
+
   const store = configureStore({
     reducer: {
       cart: cartReducer,

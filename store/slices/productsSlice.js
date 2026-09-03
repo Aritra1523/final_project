@@ -7,7 +7,7 @@ export const loadProducts = createAsyncThunk("products/load", async () => {
 
 const initialState = {
   items: [],
-  status: "idle", // idle | loading | succeeded | failed
+  status: "idle", 
   error: null,
 };
 

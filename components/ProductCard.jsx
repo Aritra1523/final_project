@@ -34,7 +34,6 @@ const handleAdd = () => {
       
       {/* Image Container */}
       <div className="product-image-wrapper relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={product.thumbnail}
           alt={product.title}
